@@ -9,7 +9,7 @@ class ProductService
     public static function getProducts($reqData)
     {
         $products = Product::all();
-        $result = ['status' => false, 'code' => 200, 'message' => 'Products viewed successfully', 'data' => @$products];
+        $result = ['status' => true, 'code' => 200, 'message' => 'Products viewed successfully', 'data' => @$products];
     
         return $result;
     }
