@@ -11,7 +11,7 @@ class AuthService
         try {
             $user = User::insertRecord($reqData);
             $user->token =  $user->createToken('authToken')->accessToken;
-            $result = ['status' => false, 'code' => 200, 'message' => 'User registered successfully', 'data' => @$user];
+            $result = ['status' => true, 'code' => 200, 'message' => 'User registered successfully', 'data' => @$user];
         } catch (\Exception $e) {
             $error['errors'] = [
                 'code' => $e->getCode(),
@@ -19,7 +19,7 @@ class AuthService
                 'line' => $e->getLine(),
                 'message' => $e->getMessage(),
             ];
-            $result = ['status' => false, 'code' => 200, 'message' => 'User registration failed!', 'data' => @$error];
+            $result = ['status' => false, 'code' => 422, 'message' => 'User registration failed!', 'data' => @$error];
         }
         return $result;
     }
