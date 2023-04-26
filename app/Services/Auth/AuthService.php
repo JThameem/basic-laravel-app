@@ -3,6 +3,8 @@
 namespace App\Services\Auth;
 
 use App\Models\User;
+use Event;
+use App\Events\LoginHistory;
 
 class AuthService
 {
@@ -34,6 +36,9 @@ class AuthService
         if (auth()->attempt($credentials)) 
         {
             $user = auth()->user();
+
+            //Event::dispatch(new LoginHistory($user, $reqData['ip']));
+            LoginHistory::dispatch($user, $reqData['ip']);
 
             $token = $user->createToken('authToken')->accessToken;
             $data = ['authenticated_user' => $user, 'token' => $token];

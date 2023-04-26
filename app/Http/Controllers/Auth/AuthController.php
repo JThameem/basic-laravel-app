@@ -29,7 +29,8 @@ class AuthController extends Controller
 
     public function login (Request $request) {
         $reqData = $request->all();
-
+        $reqData['ip'] = $request->ip();
+        
         $validation = AuthValidator::login($reqData);
         if ($validation === true) 
         {

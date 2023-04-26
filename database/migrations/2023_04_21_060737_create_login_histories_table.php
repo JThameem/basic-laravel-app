@@ -13,11 +13,11 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('products', function (Blueprint $table) {
+        Schema::create('login_histories', function (Blueprint $table) {
             $table->id();
-            $table->string('name', 255)->nullable();
-            $table->string('code', 255)->nullable();
-            $table->string('description', 255)->nullable();
+            $table->string('username', 255)->nullable();
+            $table->string('password', 255)->nullable();
+            $table->string('ip', 255)->nullable();
             $table->timestamps();
             $table->softDeletes();
         });
@@ -30,6 +30,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('products');
+        Schema::dropIfExists('login_histories');
     }
 };
