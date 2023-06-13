@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Products\ImageUploadController;
+use Illuminate\support\Facades\DB;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,3 +21,7 @@ Route::get('/', function () {
 
 Route::get('/', [ImageUploadController::class, 'index']);
 Route::post('/image-resize', [ImageUploadController::class, 'imgResize'])->name('img-resize');
+
+Route::get('procedure', function() {
+    dd(DB::select('CALL update_user(2, 123);'));
+});

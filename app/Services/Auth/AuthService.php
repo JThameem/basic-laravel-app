@@ -12,7 +12,7 @@ class AuthService
     {
         try {
             $user = User::insertRecord($reqData);
-            $user->token =  $user->createToken('authToken')->accessToken;
+            $user->token = $user->createToken('authToken')->accessToken;
             $result = ['status' => true, 'code' => 200, 'message' => 'User registered successfully', 'data' => @$user];
         } catch (\Exception $e) {
             $error['errors'] = [

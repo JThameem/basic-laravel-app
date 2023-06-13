@@ -21,7 +21,7 @@ use App\Http\Controllers\Products\ProductsController;
 }); */
 
 Route::post('register', [AuthController::class, 'register']);
-Route::post('login', [AuthController::class, 'login']);
+Route::post('login', [AuthController::class, 'login'])->name('login');
 
 Route::middleware('auth:api')->get('get/products', [ProductsController::class, 'get']);
 Route::middleware('auth:api')->get('v2/get/products', [ProductsController::class, 'getByResource']);

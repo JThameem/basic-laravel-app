@@ -14,7 +14,7 @@ class UserObserver
      */
     public function creating(User $user)
     {
-        $user->name = 'Sheik ' . $user->name;
+        $user->name = ucfirst($user->name);
     }
 
     /**
